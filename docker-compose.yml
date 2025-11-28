@@ -13,3 +13,13 @@ services:
       MYSQL_DATABASE: pizzeria
     ports:
       - "3306:3306"
+    volumes:
+      # 1. Agar data tidak hilang saat restart (PENTING)
+      - mysql_data:/var/lib/mysql
+      
+      # 2. (OPSIONAL) Jika Anda punya file SQL, hapus tanda pagar baris di bawah ini
+      # - ./nama_file_anda.sql:/docker-entrypoint-initdb.d/init.sql
+
+# Tambahkan bagian ini di paling bawah (sejajar dengan services)
+volumes:
+  mysql_data:
