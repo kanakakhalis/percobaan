@@ -1,4 +1,24 @@
-name: Hello World Workflow
+name: Deploy Pizzeria App
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  deploy:
+    runs-on: [self-hosted]
+    steps:
+      - name: Ambil Kode Terbaru
+        uses: actions/checkout@v3
+
+      - name: Matikan Container Lama (Jika Ada)
+        run: docker compose down || true
+
+      - name: Bangun Ulang Container
+        run: docker compose up -d --build
+
+      - name: Cek Status
+        run: docker psname: Hello World Workflow
 on:
   push:
     branches: [ main ]
