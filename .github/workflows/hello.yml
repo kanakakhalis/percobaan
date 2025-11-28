@@ -1,0 +1,10 @@
+name: Hello World Workflow
+on:
+  push:
+    branches: [ main ]
+jobs:
+  greeting:
+    runs-on: [kanakakhalis]
+    steps:
+      - name: Say Hello
+        run: echo "Hello, World! Berhasil connect!"
